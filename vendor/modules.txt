@@ -82,6 +82,8 @@ github.com/golang/protobuf/ptypes/timestamp
 github.com/google/btree
 # github.com/google/uuid v1.1.1
 github.com/google/uuid
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
 # github.com/jonboulle/clockwork v0.1.0
 github.com/jonboulle/clockwork
 # github.com/json-iterator/go v1.1.7
@@ -104,6 +106,8 @@ github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
 # github.com/prometheus/procfs v0.0.3
 github.com/prometheus/procfs
 github.com/prometheus/procfs/internal/fs
+# github.com/spf13/cobra v0.0.5
+github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.3
 github.com/spf13/pflag
 # github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2
@@ -176,5 +180,3 @@ google.golang.org/grpc/credentials/internal
 google.golang.org/grpc/balancer/base
 google.golang.org/grpc/binarylog/grpc_binarylog_v1
 google.golang.org/grpc/internal/syscall
-# k8s.io/helm v2.14.3+incompatible
-k8s.io/helm/pkg/helm/helmpath
