@@ -4,9 +4,9 @@ networks:
 
 services:
   etcd1:
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcdbackupctl:3.3.10
     container_name: etcd1
-    command: etcd -name etcd1 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
+    command: etcdbackupctl -name etcd1 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcdbackupctl-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
     ports:
       - 12379:2379
       - 12380:2380
@@ -14,9 +14,9 @@ services:
       - byfn
 
   etcd2:
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcdbackupctl:3.3.10
     container_name: etcd2
-    command: etcd -name etcd2 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
+    command: etcdbackupctl -name etcd2 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcdbackupctl-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
     ports:
       - 2379
       - 2380
@@ -24,9 +24,9 @@ services:
       - byfn
 
   etcd3:
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/etcdbackupctl:3.3.10
     container_name: etcd3
-    command: etcd -name etcd3 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcd-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
+    command: etcdbackupctl -name etcd3 -advertise-client-urls http://0.0.0.0:2379 -listen-client-urls http://0.0.0.0:2379 -listen-peer-urls http://0.0.0.0:2380 -initial-cluster-token etcdbackupctl-cluster -initial-cluster "etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380" -initial-cluster-state new
     ports:
       - 2379
       - 2380
