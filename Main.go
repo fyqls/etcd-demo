@@ -65,7 +65,7 @@ func init() {
 	RootCmd.Flags().StringVarP(&etcd_servers, "etcd_servers", "", "", "etcd servers address")
 	RootCmd.Flags().StringVarP(&etcd_cafile, "etcd-cafile", "", "", "etcd-cafile")
 	RootCmd.Flags().StringVarP(&etcd_certfile, "etcd-certfile", "", "", "etcd-certfile")
-	RootCmd.Flags().StringVarP(&etcd_certfile, "etcd_keyfile", "", "", "etcd_keyfile")
+	RootCmd.Flags().StringVarP(&etcd_keyfile, "etcd-keyfile", "", "", "etcd_keyfile")
 }
 
 var RootCmd = &cobra.Command{
