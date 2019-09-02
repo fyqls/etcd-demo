@@ -1,7 +1,10 @@
 package main
 
 import (
+	"crypto/tls"
+	"github.com/coreos/etcd/pkg/transport"
 	"go.uber.org/zap"
+	"strings"
 	"time"
 
 	"context"
@@ -21,9 +24,31 @@ var (
 )
 
 func create_etcd_snapshot() {
+
+	var tlsConfig *tls.Config
+
+	tlsInfo := transport.TLSInfo{
+		CertFile:       etcd_certfile ,
+		KeyFile:        etcd_keyfile ,
+		TrustedCAFile:  etcd_cafile ,
+	}
+
+	tlsConfig, err := tlsInfo.ClientConfig()
+	if err != nil {
+		fmt.Println("get client config error...")
+		panic(err)
+	}
+
+	etcd_servers_array := strings.Split(etcd_servers, ",")
+	if len(etcd_servers_array) == 0 {
+		fmt.Println("server size is 0 ...")
+		panic(err)
+	}
+
 	config := clientv3.Config{
-		Endpoints:   []string{"localhost:12379"},
+		Endpoints:   etcd_servers_array,
 		DialTimeout: 5 * time.Second,
+		TLS:         tlsConfig,
 	}
 
 	sp := snapshot.NewV3(zap.NewExample())
@@ -48,6 +73,10 @@ var RootCmd = &cobra.Command{
 	Short: "etcdSnapshot",
 	Long:  `etcdSnapshot`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if etcd_servers == "" || etcd_cafile == "" || etcd_certfile == "" || etcd_keyfile == "" {
+			fmt.Println("param is not correct")
+			panic("param is not correct")
+		}
 		create_etcd_snapshot()
 	},
 }
